@@ -1,2 +1,0 @@
-# amaruMedPrev
-aca separamos responsabilidades
