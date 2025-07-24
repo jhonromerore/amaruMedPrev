@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://amarumedcontainer.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_f72c61c753034d25842c7d5ea00c90d3 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_04c0d47dbbcc42bc9e63c4422eaf6d26 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_c24080cc65794809a0ab945dbf0fd3f8 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_5ebfcb4bf90f40e284b53a9f780b935f }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: amarumedcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f72c61c753034d25842c7d5ea00c90d3 }}/backamarumed:${{ github.sha }}
+        tags: amarumedcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c24080cc65794809a0ab945dbf0fd3f8 }}/amarumedcontainer/backamarumed:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'amarumed-backend-webapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8bca4e42e65c4403ab7202c87f1601ee }}
-        images: 'amarumedcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f72c61c753034d25842c7d5ea00c90d3 }}/backamarumed:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_86e7274410a840b38aa525630ea83dc3 }}
+        images: 'amarumedcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c24080cc65794809a0ab945dbf0fd3f8 }}/amarumedcontainer/backamarumed:${{ github.sha }}'
